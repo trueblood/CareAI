@@ -26,8 +26,10 @@ def generate_incident_description():
     try:
         input_text = request.json.get('input_text')
         response_length = request.json.get('response_length')
+        additional_json_data = request.json.get('additional_data')# Example JSON data
+        fields_to_extract = request.json.get('fields_to_extract')# Example JSON data
         defaultController = DefaultController()
-        result = defaultController.generate_incident_description(input_text, int(response_length))
+        result = defaultController.generate_incident_description(input_text, int(response_length), additional_json_data, fields_to_extract)
         return jsonify(result)
     except Exception as e:
         return jsonify({'error': str(e)})
