@@ -8,8 +8,8 @@ class DefaultController:
 
     def generate_incident_description(self, input_text, response_length, additional_data=None, fields_to_extract=None):
         if additional_data:
-            summary = self.summary_creator.create_summary_from_json(additional_data, fields_to_extract)
-            combined_input = f"{input_text}\n{summary}"
+            summary = self.summary_creator.create_abstract_summary_from_json(additional_data, fields_to_extract)
+            combined_input = f"{input_text} {summary}"
             print(combined_input)
             input_text = combined_input
         else:
